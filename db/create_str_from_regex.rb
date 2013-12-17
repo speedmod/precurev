@@ -30,6 +30,11 @@ def add_parlen target
   target + "(|)"
 end
 
+# 出力用メソッド
+def print_line song_id, kana
+  puts "#{song_id}\t#{kana.gsub('_','')}"
+end
+
 # 標準出力に文字列集合と対応する曲IDをTSV形式で出力する。
 #
 # @param [String] target 特化正規表現
@@ -57,7 +62,7 @@ def create_strings target, song_id=-1
 
   res_eval = eval(target)
   if res_eval.instance_of? String
-    puts "#{song_id}\t#{res_eval}"
+    print_line song_id, res_eval
     return
   end
 
@@ -76,7 +81,7 @@ def create_strings target, song_id=-1
         # このrescueで拾われないものがある。
         e
       rescue SyntaxError => se
-        #puts "#{e} (SyntaxError)"
+        # 何もしない
       end
     end
   end
@@ -85,12 +90,12 @@ def create_strings target, song_id=-1
     begin
       a = eval(e)
       a.each do |elem|
-        puts "#{song_id}\t#{elem}" if elem != :alt
+        print_line song_id, elem if elem != :alt
       end
     rescue
-      puts "#{song_id}\t#{e}" if e != :alt && e != "alt"
+      print_line song_id, e if e != :alt && e != "alt"
     rescue SyntaxError => se
-      puts "#{song_id}\t#{e} (SyntaxError)"
+      print_line song_id, e+" (SyntaxError)"
     end
   end
 end

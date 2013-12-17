@@ -40,23 +40,23 @@ Character.delete_all
   end
 end
 
-# # Kanaのレコードを作成
-# # 削除
-# Kana.delete_all
-# # ファイルのデータを読み込んで作成
-# {
-#   Kana  => './db/kana.tsv'
-# }.each do |clazz, filename|
-#   file = File.open filename
-#   begin
-#     file.each_line do |line|
-#       values = line.strip.split /\t/
-#       clazz.create(song_id: values[0], kana: values[1])
-#     end
-#   ensure
-#     file.close
-#   end
-# end
+# Kanaのレコードを作成
+# 削除
+Kana.delete_all
+# ファイルのデータを読み込んで作成
+{
+  Kana  => './db/kana.tsv'
+}.each do |clazz, filename|
+  file = File.open filename
+  begin
+    file.each_line do |line|
+      values = line.strip.split /\t/
+      clazz.create(song_id: values[0], kana: values[1])
+    end
+  ensure
+    file.close
+  end
+end
 
 # ボーカル、キャラクター、作曲、作詞、編曲の各リンククラスのレコードを作成
 # 削除
