@@ -1,0 +1,79 @@
+<form class="fields" id="song_query" action="songs/search" method="post">
+  <table>
+  <tr>
+    <td>曲名：</td><td><input id="query" type="text" name="query" /></td>
+    <td></td>
+    <td>プリカラ部♪presents</td>
+  </tr>
+
+  <tr>
+    <td>作曲：</td>
+    <td>
+      <select id="composer" name="composer">
+	<option value="empty"></option>
+	<% Composer.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>シリーズ：</td>
+    <td>
+      <select id="series" name="series">
+	<option value="empty"></option>
+	<% Series.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>作詞：</td>
+    <td>
+      <select id="writer" name="writer">
+	<option value="empty"></option>
+	<% Writer.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>ボーカル：</td>
+    <td>
+      <select id="vocalist" name="vocalist">
+	<option value="empty"></option>
+	<% Vocalist.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>編曲：</td>
+    <td>
+      <select id="arranger" name="arranger">
+	<option value="empty"></option>
+	<% Arranger.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>キャラクター</td>
+    <td>
+      <select id="character" name="character">
+	<option value="empty"></option>
+	<% Character.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+  </tr>
+  </table>
+  <%= hidden_field_tag('authenticity_token', form_authenticity_token) %>
+</form>
+
+<div id="song_table"></div>

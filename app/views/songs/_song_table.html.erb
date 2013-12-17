@@ -1,0 +1,32 @@
+<table>
+<% @result.each do |r| %>
+  <tr>
+    <td><%= r.name %></td>
+    <td>
+      <% r.vocalist_links.each do |c| %>
+        <%= c.vocalist.name %><br />
+      <% end %>
+    </td>
+    <td>
+      <% r.character_links.each do |c| %>
+        <%= c.character.name %><br />
+      <% end %>
+    </td>
+    <td>
+      <% r.composer_links.each do |c| %>
+        <%= c.composer.name %><br />
+      <% end %>
+    </td>
+    <td>
+      <% r.writer_links.each do |c| %>
+        <%= c.writer.name %><br />
+      <% end %>
+    </td>
+    <td>
+      <% r.arranger_links.each do |c| %>
+        <%= c.arranger.name %><br />
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>

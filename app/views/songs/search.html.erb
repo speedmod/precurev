@@ -1,0 +1,40 @@
+<h1>検索結果</h1>
+<table border=1>
+  <tr>
+    <td>曲名</td><td>ボーカル</td><td>キャラクター</td><td>作曲</td><td>作詞</td><td>編曲</td>
+  </tr>
+<% @result.each do |r| %>
+  <tr>
+    <td><%= r.name %></td>
+    <td>
+      <%
+	 #r.includes:vocalist_links
+	 #r.vocalist_links.includes:vocalist
+	 %>
+      <% r.vocalist_links.each do |c| %>
+        <%= c.vocalist.name %><br />
+      <% end %>
+    </td>
+    <td>
+      <% r.character_links.each do |c| %>
+        <%= c.character.name %><br />
+      <% end %>
+    </td>
+    <td>
+      <% r.composer_links.each do |c| %>
+        <%= c.composer.name %><br />
+      <% end %>
+    </td>
+    <td>
+      <% r.writer_links.each do |c| %>
+        <%= c.writer.name %><br />
+      <% end %>
+    </td>
+    <td>
+      <% r.arranger_links.each do |c| %>
+        <%= c.arranger.name %><br />
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
