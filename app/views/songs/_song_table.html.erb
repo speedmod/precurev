@@ -1,32 +1,17 @@
-<table>
+<!--table class="table table-bordered"-->
+<table class="table table-hover">
+  <tr><th>曲名</th><th>ボーカル</th><th>キャラ</th><th>作曲</th><th>作詞</th><th>編曲</th></tr>
 <% @result.each do |r| %>
+  <% data = JSON.parse(r.songdata) %>
   <tr>
-    <td><%= r.name %></td>
-    <td>
-      <% r.vocalist_links.each do |c| %>
-        <%= c.vocalist.name %><br />
-      <% end %>
-    </td>
-    <td>
-      <% r.character_links.each do |c| %>
-        <%= c.character.name %><br />
-      <% end %>
-    </td>
-    <td>
-      <% r.composer_links.each do |c| %>
-        <%= c.composer.name %><br />
-      <% end %>
-    </td>
-    <td>
-      <% r.writer_links.each do |c| %>
-        <%= c.writer.name %><br />
-      <% end %>
-    </td>
-    <td>
-      <% r.arranger_links.each do |c| %>
-        <%= c.arranger.name %><br />
-      <% end %>
-    </td>
+    <td width="200"><%= r.name %></td>
+    <% ["vocalist", "character", "composer", "writer", "arranger"].each do |key| %>
+      <td width="100">
+        <% data[key].each do |v| %>
+          <%= v %><br />
+        <% end %>
+      </td>
+    <% end %>
   </tr>
 <% end %>
 </table>

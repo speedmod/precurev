@@ -61,6 +61,7 @@ def create_strings target, song_id=-1
     return
   end
 
+  # res_evalをさらに変換
   res_eval.map do |e|
     if e.instance_of? String
       e.gsub!(/\]([\p{hiragana}\d\w]+)/, ']"\1"')

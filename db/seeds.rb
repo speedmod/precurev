@@ -1,4 +1,6 @@
 # coding: utf-8
+
+# 一時的にコメントアウト
 # File.open('./db/character_link_origin.tsv').each_line do |line|
 #   song_id, chara_names = line.strip.split /\t/
 #   next unless chara_names
@@ -23,20 +25,22 @@
 #   end
 # end
 
-{
-  Kana  => './db/kana.tsv'
-}.each do |clazz, filename|
-  file = File.open filename
-  begin
-    file.each_line do |line|
-      values = line.strip.split /\t/
-      clazz.create(song_id: values[0], kana: values[1])
-    end
-  ensure
-    file.close
-  end
-end
+# 一時的にコメントアウト
+# {
+#   Kana  => './db/kana.tsv'
+# }.each do |clazz, filename|
+#   file = File.open filename
+#   begin
+#     file.each_line do |line|
+#       values = line.strip.split /\t/
+#       clazz.create(song_id: values[0], kana: values[1])
+#     end
+#   ensure
+#     file.close
+#   end
+# end
 
+# 一時的にコメントアウト
 # { Series => './db/series.txt' }.each do |clazz, filename|
 #   file = File.open filename
 #   begin
@@ -97,3 +101,24 @@ end
 #     file.close
 #   end
 # end
+
+# 曲データに紐づくデータを全て予め取得しておき、songs.songdataカラムに格納しておく。
+
+data_hash = {}
+Song.all.each do |song|
+  {
+    composer:  Composer,
+    writer:    Writer,
+    vocalist:  Vocalist,
+    arranger:  Arranger,
+    character: Character,
+  }.each do |key, clazz|
+    tmp = []
+    song.send((key.to_s + '_links').intern).each do |link|
+      tmp << link.send(key).name
+    end
+    data_hash[key] = tmp
+  end
+  #p data_hash
+  song.update_attribute(:songdata, JSON.dump(data_hash))
+end
