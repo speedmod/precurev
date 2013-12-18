@@ -1,28 +1,22 @@
+<!--プリカラ部♪presents Mevius search-->
 <form class="fields" id="song_query" action="songs/search" method="post">
-<!--プリカラ部♪presents<span style="font-size:x-large">Mevius search</span>--> <table>
+<table>
   <tr>
     <td><input id="query" type="text" name="query" placeholder="曲名" class="form-control" /></td>
-    <td></td>
     <td>
-<div class="radio">
-  <label>
-    <input type="radio" name="searchpos" value="begin_with" checked>
-    ...から始まる
-  </label>
-</div>
-<div class="radio">
-  <label>
-    <input type="radio" name="searchpos" value="included">
-    ...を含む
-  </label>
-</div>
-
+      <div class="radio">
+	<label>
+	  <input type="radio" name="searchpos" value="begin_with" checked>
+	  ...から始まる
+	</label>
+      </div>
+      <div class="radio">
+	<label>
+	  <input type="radio" name="searchpos" value="included">
+	  ...を含む
+	</label>
+      </div>
     </td>
-<!--
-  </tr>
-  <tr>
--->
-    <td></td>
     <td>
       <select id="composer" name="composer" placeholder="作曲" class="form-control">
 	<option value="empty">作曲</option>
@@ -31,7 +25,6 @@
 	<% end %>
       </select>
     </td>
-    <td></td>
     <td>
       <select id="series" name="series" class="form-control">
 	<option value="empty">シリーズ</option>
@@ -40,10 +33,6 @@
 	<% end %>
       </select>
     </td>
-<!--  </tr>
-  <tr>
--->
-    <td></td>
     <td>
       <select id="writer" name="writer" class="form-control">
 	<option value="empty">作詞</option>
@@ -52,7 +41,6 @@
 	<% end %>
       </select>
     </td>
-    <td></td>
     <td>
       <select id="vocalist" name="vocalist" class="form-control">
 	<option value="empty">ボーカル</option>
@@ -61,9 +49,6 @@
 	<% end %>
       </select>
     </td>
-<!--  </tr>
-  <tr>-->
-    <td></td>
     <td>
       <select id="arranger" name="arranger" class="form-control">
 	<option value="empty">編曲</option>
@@ -72,7 +57,6 @@
 	<% end %>
       </select>
     </td>
-    <td></td>
     <td>
       <select id="character" name="character" class="form-control">
 	<option value="empty">キャラクター</option>
@@ -81,17 +65,9 @@
 	<% end %>
       </select>
     </td>
-<!--  </tr>
-  <tr>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-  </tr>-->
-<td><input id="resetbtn" type="reset" value="Reset(Ctrl-d)" class="btn btn-default btn-sm"></td>
+    <td>
+      <input id="resetbtn" type="reset" value="Reset(Ctrl-d)" class="btn btn-default btn-sm">
+    </td>
   </table>
-  <%= hidden_field_tag('authenticity_token', form_authenticity_token) %>
-
 </form>
-
 <div id="song_table"></div>

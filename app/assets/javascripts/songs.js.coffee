@@ -29,28 +29,10 @@ search_songs = ->
     success: (data) ->
       $('#song_table').html(data.html)
 $ ->
-  # 動くけど、結局自動補完ツール
-  # availableTags = ["あいうえお",  "あかさたな",  "Asp",  "BASIC",  "C"]
-  # $("#inputbox").autocomplete(source: availableTags)
-    # # 英語の入力ならまだしも、日本語の入力時にうまくいかない。
-  #$('#query').bind 'textchange', (event, previousText)->
   $('#query').bind 'textchange', search_songs
   $('#resetbtn').click clear_all
   $('.fields').change search_songs
-  # Ctrl-dでリセットボタン
-  $('.fields').keydown (e)->
+  # Ctrl-dでリセットボタン押下
+  $(document).keydown (e)->
     if e.ctrlKey==true && e.which==68
       $('#resetbtn').eq(0).click()
-
-    # 結局この値($(this).val())を使って検索すればいいだけ。
-    #$('#outputbox').val($(this).val)
-  # $('#outputbox').change ->
-  #   alert(previousText)
-        # alert('Hello')
-  # ダイアログをキーボードで閉じた時にまで発火。うざい。
-  # $('#inputbox').keyup ->
-  #   alert('Hello')
-  # フォーカスが変わった時に発火
-  # $('#inputbox').change ->
-  #   alert('Hello')
-#   $('#outputbox').text previousText + $(this).val()
