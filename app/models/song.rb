@@ -6,6 +6,7 @@ class Song < ActiveRecord::Base
   has_many :composer_links
   has_many :writer_links
   has_many :arranger_links
+  has_many :codes
   belongs_to :series
 
   class << self

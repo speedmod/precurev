@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217140509) do
+ActiveRecord::Schema.define(version: 20131219132558) do
 
   create_table "arranger_links", force: true do |t|
     t.integer  "song_id",     null: false
@@ -41,18 +41,13 @@ ActiveRecord::Schema.define(version: 20131217140509) do
     t.datetime "updated_at"
   end
 
-  create_table "code_links", force: true do |t|
-    t.integer  "code_id",    null: false
-    t.integer  "song_id",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "codes", force: true do |t|
-    t.string   "number"
-    t.string   "maker"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "song_id",                 null: false
+    t.string  "maker"
+    t.string  "machine"
+    t.boolean "movie",   default: false
+    t.string  "code",                    null: false
+    t.string  "memo"
   end
 
   create_table "composer_links", force: true do |t|

@@ -1,16 +1,26 @@
 <!--table class="table table-bordered"-->
 <table class="table table-hover">
-  <tr><th>曲名</th><th>ボーカル</th><th>キャラ</th><th>作曲</th><th>作詞</th><th>編曲</th></tr>
+  <tr><th>曲名</th><th>ボーカル</th><th>キャラ</th><th>作曲</th><th>作詞</th><th>編曲</th><th>DAM</th><th>JOY</th><th>UGA</th><th>鉄人</th><th>パセラ</th></tr>
 <% @result.each do |r| %>
   <% data = JSON.parse(r.songdata) %>
   <tr>
     <td width="200"><%= r.name %></td>
-    <% ["vocalist", "character", "composer", "writer", "arranger"].each do |key| %>
-      <td width="100">
-        <% data[key].each do |v| %>
-          <%= v %><br />
-        <% end %>
-      </td>
+    <% ["vocalist", "character", "composer", "writer", "arranger","code"].each do |key| %>
+      <% if key == "code" %>
+        <% ["DAM", "JOY", "UGA", "tetsujin", "pasela"].each do |maker| %>
+          <td width="100">
+	    <% data[key][maker].each do |str| %>
+	      <%= str %><br />
+	    <% end %>
+	  </td>
+	<% end %>
+      <% else %>
+        <td width="100">
+          <% data[key].each do |v| %>
+            <%= v %><br />
+          <% end %>
+        </td>
+      <% end %>
     <% end %>
   </tr>
 <% end %>
