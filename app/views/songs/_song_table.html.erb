@@ -2,6 +2,7 @@
 <p align="right"><span style="font-size:x-large"><%= @result.size %></span>曲</p>
 <table class="table table-hover">
   <tr>
+    <th></th>
     <th>曲名</th>
     <th>ボーカル</th>
     <!--th>キャラ</th-->
@@ -17,6 +18,7 @@
 <% @result.each do |r| %>
   <% data = JSON.parse(r.songdata) %>
   <tr>
+    <td width="10"><%= data['series'] %></td>
     <td width="200"><%= r.name %></td>
     <% ["vocalist",
        # "character",

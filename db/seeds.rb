@@ -152,8 +152,10 @@
 # 曲データに紐づくデータを全て予め取得しておき、songs.songdataカラムに格納しておく。
 # songs#songdataカラムをupdateするだけなので、データの削除は不要。
 data_hash = {}
+series_map = [nil, '無', 'MH', 'SS', '5', 'GoGo', 'F', 'HC', 'SU', 'SM', 'DK']
 Song.all.each do |song|
   {
+    series:    Series,
     composer:  Composer,
     writer:    Writer,
     vocalist:  Vocalist,
@@ -175,6 +177,8 @@ Song.all.each do |song|
           (code.machine? ? "<br>(#{code.machine}以降)" : "") +
           (code.movie ? "★" : "")
       end
+    elsif key == :series
+      tmp = (series_map[song.series_id].presence || 'AS')
     else
       song.send((key.to_s + '_links').intern).each do |link|
         tmp << link.send(key).name
