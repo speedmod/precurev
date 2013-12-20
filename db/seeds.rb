@@ -120,36 +120,37 @@
 #   end
 # end
 
-# Codeデータを作成
-# Code:Song = * : 1
-Code.delete_all
-[
- './db/code_dam.tsv',
- './db/code_joy.tsv',
- './db/code_uga.tsv',
- './db/code_tetsujin.tsv',
- './db/code_pasela.tsv',
-].each do |filename|
-  file = File.open(filename)
-  begin
-    file.each_line do |line|
-      song_id,maker,machine,movie,code =
-        line.strip.split(/\t/).map { |v| v.strip.length == 0 ? nil : v.strip }
-      code = Code.create(song_id:  song_id.to_i,
-                         maker:    maker,
-                         machine:  machine,
-                         movie:    movie=='TRUE',
-                         code:     code)
-    end
-  ensure
-    file.close
-  end
-end
+# # Codeデータを作成
+# # Code:Song = * : 1
+# Code.delete_all
+# [
+#  './db/code_dam.tsv',
+#  './db/code_joy.tsv',
+#  './db/code_uga.tsv',
+#  './db/code_tetsujin.tsv',
+#  './db/code_pasela.tsv',
+# ].each do |filename|
+#   file = File.open(filename)
+#   begin
+#     file.each_line do |line|
+#       song_id,maker,machine,movie,code =
+#         line.strip.split(/\t/).map { |v| v.strip.length == 0 ? nil : v.strip }
+#       code = Code.create(song_id:  song_id.to_i,
+#                          maker:    maker,
+#                          machine:  machine,
+#                          movie:    movie=='TRUE',
+#                          code:     code)
+#     end
+#   ensure
+#     file.close
+#   end
+# end
 
 ################################
 # 最後にsongs#songdataを全格納
 ################################
 # 曲データに紐づくデータを全て予め取得しておき、songs.songdataカラムに格納しておく。
+# songs#songdataカラムをupdateするだけなので、データの削除は不要。
 data_hash = {}
 Song.all.each do |song|
   {
@@ -171,7 +172,7 @@ Song.all.each do |song|
       }
       song.codes.each do |code|
         tmp[code.maker] << code.code +
-          (code.machine? ? "(#{code.machine}以降)" : "") +
+          (code.machine? ? "<br>(#{code.machine}以降)" : "") +
           (code.movie ? "★" : "")
       end
     else

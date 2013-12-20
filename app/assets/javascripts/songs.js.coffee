@@ -19,6 +19,7 @@ search_songs = ->
   vocalist  = $('#song_query [name=vocalist]').val()
   character = $('#song_query [name=character]').val()
   searchpos = $('#song_query [name=searchpos]:checked').val()
+  $('#song_table').html('<div align="center"><br><br><img src="loading.gif"></div>')
   $.ajax
     url: '/songs/search'
     type: 'post'

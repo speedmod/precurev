@@ -1,9 +1,62 @@
-<!--プリカラ部♪presents Mevius search-->
 <form class="fields" id="song_query" action="songs/search" method="post">
 <table>
+  <tr><th>【プリカラ検索】</th><th>シリーズ</th><th>ボーカル</th><th>キャラクター</th><th>作曲</th><th>作詞</th><th>編曲</th><td>© プリカラ部 ♪</td></tr>
   <tr>
-    <td><input id="query" type="text" name="query" placeholder="曲名" class="form-control" /></td>
     <td>
+      <input id="query" type="text" name="query" placeholder="曲名" class="form-control" />
+    </td>
+    <td>
+      <select id="series" name="series" class="form-control">
+	<option value="empty"></option>
+	<% Series.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>
+      <select id="vocalist" name="vocalist" class="form-control">
+	<option value="empty"></option>
+	<% Vocalist.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>
+      <select id="character" name="character" class="form-control">
+	<option value="empty"></option>
+	<% Character.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>
+      <select id="composer" name="composer" placeholder="作曲" class="form-control">
+	<option value="empty"></option>
+	<% Composer.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>
+      <select id="writer" name="writer" class="form-control">
+	<option value="empty"></option>
+	<% Writer.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>
+      <select id="arranger" name="arranger" class="form-control">
+	<option value="empty"></option>
+	<% Arranger.all.each do |s| %>
+	<option value="<%= s.id %>"><%= s.name %></option>
+	<% end %>
+      </select>
+    </td>
+    <td>
+      <input id="resetbtn" type="reset" value="Reset(Ctrl-d)" class="btn btn-default btn-sm">
+    </td>
+  </table>
       <div class="radio">
 	<label>
 	  <input type="radio" name="searchpos" value="begin_with" checked>
@@ -16,58 +69,5 @@
 	  ...を含む
 	</label>
       </div>
-    </td>
-    <td>
-      <select id="composer" name="composer" placeholder="作曲" class="form-control">
-	<option value="empty">作曲</option>
-	<% Composer.all.each do |s| %>
-	<option value="<%= s.id %>"><%= s.name %></option>
-	<% end %>
-      </select>
-    </td>
-    <td>
-      <select id="series" name="series" class="form-control">
-	<option value="empty">シリーズ</option>
-	<% Series.all.each do |s| %>
-	<option value="<%= s.id %>"><%= s.name %></option>
-	<% end %>
-      </select>
-    </td>
-    <td>
-      <select id="writer" name="writer" class="form-control">
-	<option value="empty">作詞</option>
-	<% Writer.all.each do |s| %>
-	<option value="<%= s.id %>"><%= s.name %></option>
-	<% end %>
-      </select>
-    </td>
-    <td>
-      <select id="vocalist" name="vocalist" class="form-control">
-	<option value="empty">ボーカル</option>
-	<% Vocalist.all.each do |s| %>
-	<option value="<%= s.id %>"><%= s.name %></option>
-	<% end %>
-      </select>
-    </td>
-    <td>
-      <select id="arranger" name="arranger" class="form-control">
-	<option value="empty">編曲</option>
-	<% Arranger.all.each do |s| %>
-	<option value="<%= s.id %>"><%= s.name %></option>
-	<% end %>
-      </select>
-    </td>
-    <td>
-      <select id="character" name="character" class="form-control">
-	<option value="empty">キャラクター</option>
-	<% Character.all.each do |s| %>
-	<option value="<%= s.id %>"><%= s.name %></option>
-	<% end %>
-      </select>
-    </td>
-    <td>
-      <input id="resetbtn" type="reset" value="Reset(Ctrl-d)" class="btn btn-default btn-sm">
-    </td>
-  </table>
 </form>
 <div id="song_table"></div>
