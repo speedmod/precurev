@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219132558) do
+ActiveRecord::Schema.define(version: 20131221174200) do
 
   create_table "arranger_links", force: true do |t|
     t.integer  "song_id",     null: false
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20131219132558) do
     t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "abbreviation"
   end
 
   create_table "songs", force: true do |t|

@@ -32,6 +32,7 @@ search_songs = ->
 $ ->
   $('#query').bind 'textchange', search_songs
   $('#resetbtn').click clear_all
+  $('#top').click -> location.reload()
   $('.fields').change search_songs
   # Ctrl-d：リセットボタン押下
   $(document).keydown (e)->
