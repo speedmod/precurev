@@ -43,5 +43,31 @@ $ ->
     if e.ctrlKey==true && e.which==85
       $(this).val('empty')
       search_songs()
+  $('#reset_series').click ->
+    $('#series').val('empty')
+    search_songs()
+  $('#reset_vocalist').click ->
+    $('#vocalist').val('empty')
+    search_songs()
+  $('#reset_character').click ->
+    $('#character').val('empty')
+    search_songs()
+  $('#reset_composer').click ->
+    $('#composer').val('empty')
+    search_songs()
+  $('#reset_writer').click ->
+    $('#writer').val('empty')
+    search_songs()
+  $('#reset_arranger').click ->
+    $('#arranger').val('empty')
+    search_songs()
+
+  # for item, i in ['series','character','vocalist','composer','writer','arranger']
+  #   console.log('#reset_'+item+" "+i)
+  #   console.log($('#reset_'+item))
+  #   console.log($('#'+item))
+  #   $('#reset_'+item).click ->
+  #     $('#'+item).val('empty')
+  #     search_songs()
   # Enterキーによるsubmit抑制
   $('#query').keypress (e) -> e.which != 13

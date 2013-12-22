@@ -1,6 +1,16 @@
+<p style="text-align:right">※使い方は<a target="" href="http://blog.goo.ne.jp/speedmod/e/f8408101bba0f7676562d2bc0caa23be">このページ</a>を参考にしてください。</p>
 <form class="fields" id="song_query" action="songs/search" method="post">
 <table>
-  <tr><th id="top">【プリカラ検索】</th><th>シリーズ</th><th>ボーカル</th><th>キャラクター</th><th>作曲</th><th>作詞</th><th>編曲</th><td>© プリカラ部 ♪</td></tr>
+  <tr>
+    <th id="top">【プリカラ検索】</th>
+    <th>シリーズ <i id="reset_series" class="fa fa-eraser"></i></th>
+    <th>ボーカル <i id="reset_vocalist" class="fa fa-eraser"></i></th>
+    <th>キャラクター <i id="reset_character" class="fa fa-eraser"></i></th>
+    <th>作曲 <i id="reset_composer" class="fa fa-eraser"></i></th>
+    <th>作詞 <i id="reset_writer" class="fa fa-eraser"></i></th>
+    <th>編曲 <i id="reset_arranger" class="fa fa-eraser"></i></th>
+    <td>© プリカラ部 ♪</td>
+  </tr>
   <tr>
     <td>
       <input id="query" type="text" name="query" placeholder="曲名" class="form-control" />
