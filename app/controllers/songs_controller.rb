@@ -21,6 +21,7 @@ class SongsController < ApplicationController
         ids = []
         obj = clazz.where(id: value).first
         obj.send((str+'_links').intern).each do |link|
+          next unless link.song
           ids << link.song.id
         end
         # 共通部分のみ取得
