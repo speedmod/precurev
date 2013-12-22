@@ -61,13 +61,5 @@ $ ->
   $('#reset_arranger').click ->
     $('#arranger').val('empty')
     search_songs()
-
-  # for item, i in ['series','character','vocalist','composer','writer','arranger']
-  #   console.log('#reset_'+item+" "+i)
-  #   console.log($('#reset_'+item))
-  #   console.log($('#'+item))
-  #   $('#reset_'+item).click ->
-  #     $('#'+item).val('empty')
-  #     search_songs()
   # Enterキーによるsubmit抑制
   $('#query').keypress (e) -> e.which != 13
