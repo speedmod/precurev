@@ -45,3 +45,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'everywhere'
+gem 'font-awesome-rails'

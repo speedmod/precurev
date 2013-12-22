@@ -39,6 +39,8 @@ GEM
     everywhere (2.0.0)
       activerecord
     execjs (2.0.2)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.0.2)
@@ -116,6 +118,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   everywhere
+  font-awesome-rails
   jbuilder (~> 1.0.1)
   jquery-rails
   rails (= 4.0.0.rc1)
