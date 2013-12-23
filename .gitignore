@@ -16,19 +16,6 @@
 *.swn
 .DS_Store
 
-config/database.yml
-config/puma.rb
-config/sunspot.yml
-config/omniauth-facebook.yml
-config/asset_sync_default.yml
-config/exception_notification.yml
-config/smtp_settings.yml
-config/paypal.yml
-config/twilio.yml
-config/system_time.yml
-config/google_analytics.yml
-config/universal_analytics.yml
-
 vendor/bundle/*
 
 public/system
@@ -36,8 +23,6 @@ public/group
 public/event
 public/user
 public/assets
-public/file_upload
-public/img
 
 coverage/*
 .sass-cache
