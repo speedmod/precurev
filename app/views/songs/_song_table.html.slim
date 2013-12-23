@@ -27,7 +27,7 @@ table.table.table-hover
         - if key == "code"
           - ["DAM", "JOY", "UGA", "tetsujin", "pasela"].each do |maker|
             td width="100"
-              - data[key]["#{maker}"].each do |str|
+              - data[key][maker].each do |str|
                 = raw(str)
                 br
         - else
