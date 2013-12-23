@@ -46,3 +46,4 @@ end
 
 gem 'everywhere'
 gem 'font-awesome-rails'
+gem 'slim-rails'

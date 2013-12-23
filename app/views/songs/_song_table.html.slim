@@ -1,0 +1,37 @@
+p align="right"
+  span style="font-size:x-large"
+    = @result.size
+  | 曲
+table.table.table-hover
+  tr
+    th 略
+    th 曲名
+    th ボーカル
+    /th キャラ
+    th 作曲
+    th 作詞
+    th 編曲
+    th DAM
+    th JOY
+    th UGA
+    th 鉄人
+    th パセラ
+  - @result.each do |r|
+    - data = JSON.parse(r.songdata)
+    tr
+      td width="10"
+        = data['series']
+      td width="200"
+        = r.name
+      - ["vocalist","composer","writer","arranger","code"].each do |key|
+        - if key == "code"
+          - ["DAM", "JOY", "UGA", "tetsujin", "pasela"].each do |maker|
+            td width="100"
+              - data[key]["#{maker}"].each do |str|
+                = raw(str)
+                br
+        - else
+          td width="100"
+            - data[key].each do |v|
+              = v
+              br
