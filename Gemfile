@@ -45,5 +45,6 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'everywhere'
+gem 'rb-readline', '~> 0.4.2'
 gem 'font-awesome-rails'
 gem 'slim-rails'
