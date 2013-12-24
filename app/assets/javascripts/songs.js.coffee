@@ -63,3 +63,4 @@ $ ->
     search_songs()
   # Enterキーによるsubmit抑制
   $('#query').keypress (e) -> e.which != 13
+  $('.header').clingify()

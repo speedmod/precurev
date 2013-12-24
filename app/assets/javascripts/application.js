@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.textchange.min.js
+//= require jquery.clingify.js  
