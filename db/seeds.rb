@@ -187,7 +187,7 @@ Song.all.each do |song|
         "pasela"   => [],
       }
       song.codes.each do |code|
-        tmp[code.maker] << code.code +
+        tmp[code.maker] << "<strong>#{code.code}</strong>" +
           (code.machine? ? "<br />(#{code.machine}以降)" : "") +
           (code.movie ? "★" : "")
       end

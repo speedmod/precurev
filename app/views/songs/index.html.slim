@@ -1,13 +1,19 @@
 .header style="background:white;border-bottom:solid lightgrey thin;"
+  p#top style="text-align:center"
+    |プリカラ検索　
+    = link_to mobile_songs_path do
+      i.fa.fa-mobile.fa-2x
+    | ／
+    = link_to root_path do
+      i.fa.fa-desktop
+    | 　
+    a target="_blank" href="http://blog.goo.ne.jp/speedmod/e/f8408101bba0f7676562d2bc0caa23be"
+      | (使い方)
   form#song_query.fields action="songs/search" method="post"
     .table-responsive
       table.table style="margin:0px;padding:0px"
         tr
-          th#top
-            |プリカラ検索　
-            a target="_blank" href="http://blog.goo.ne.jp/speedmod/e/f8408101bba0f7676562d2bc0caa23be"
-              | (使い方)
-
+          th
           th
           th
             | シリーズ
@@ -16,7 +22,7 @@
             | ボーカル
             i#reset_vocalist.fa.fa-eraser
           th
-            | キャラクター
+            | キャラ
             i#reset_character.fa.fa-eraser
           th
             | 作曲

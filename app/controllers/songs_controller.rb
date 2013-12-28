@@ -30,8 +30,13 @@ class SongsController < ApplicationController
       @result = Song.where(id: song_ids)
     end
     if request.xhr?
-      html = render_to_string partial: "songs/song_table"
+      part = is_mobile ? 'songs/song_table_m' : 'songs/song_table'
+      html = render_to_string partial: part
       render json: { html: html }
     end
+  end
+
+  def is_mobile
+    request.headers['referer'].include?('mobile')
   end
 end
