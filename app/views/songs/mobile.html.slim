@@ -1,0 +1,58 @@
+p#top style="text-align:center"
+  a name="top"
+  |プリカラ検索(mobile)　
+  = link_to mobile_songs_path do
+    i.fa.fa-mobile.fa-2x
+  | ／
+  = link_to root_path do
+    i.fa.fa-desktop
+  | 　
+  a target="_blank" href="http://blog.goo.ne.jp/speedmod/e/f8408101bba0f7676562d2bc0caa23be"
+    | (使い方)
+form#song_query.fields action="songs/search" method="post"
+  table.table
+    tr
+      th
+      th
+      th
+        | シリーズ
+        i#reset_series.fa.fa-eraser
+      th
+        | ボーカル
+        i#reset_vocalist.fa.fa-eraser
+      th
+        | キャラ
+        i#reset_character.fa.fa-eraser
+      th
+        | 作曲
+        i#reset_composer.fa.fa-eraser
+      th
+        | 作詞
+        i#reset_writer.fa.fa-eraser
+      th
+        | 編曲
+        i#reset_arranger.fa.fa-eraser
+      td
+        | © プリカラ部 ♪
+    tr
+      td
+        input#query.form-control type="text" name="query" placeholder="曲名"
+      td
+        label
+          input type="radio" name="searchpos" value="begin_with" checked="true"
+          | 先頭
+        label
+          input type="radio" name="searchpos" value="included"
+          | 含む
+      - h = { series: Series, vocalist: Vocalist, character: Character, composer: Composer, writer: Writer, arranger: Arranger }
+      - h.each do |key, clazz|
+        td
+          select.form-control id="#{key.to_s}" name="#{key.to_s}"
+            option value="empty"
+            - clazz.all.each do |s|
+              option value="#{s.id}"
+                = s.name
+      td
+        input#resetbtn.btn.btn-default.btn-sm type="reset" value="Reset(Ctrl-d)"
+br
+#song_table

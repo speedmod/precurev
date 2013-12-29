@@ -1,0 +1,40 @@
+p align="right"
+  span style="font-size:x-large"
+    = @result.size
+  | 曲
+.table-responsive
+  table.table.table-striped
+    tr
+      th 略
+      th 曲名
+      th Vo.
+      th 作曲／作詞／編曲
+      th DAM
+      th JOY
+      th UGA
+      th 鉄人
+      th パセラ
+      th
+    - @result.each do |r|
+      - data = JSON.parse(r.songdata)
+      tr
+        td width="10"
+          = data['series']
+        td width="200"
+          = r.name
+        td width="100"
+          = data['vocalist'].join(',')
+        / 作詞・作曲・編曲
+        td width="100"
+          = artists_column data['writer'], data['composer'], data['arranger']
+        / カラオケ番号
+        - {'DAM'=>'DAM','JOY'=>'JOY','UGA'=>'UGA','tetsujin'=>'鉄人','pasela'=>'パセラ'}.each do |maker, disp|
+          td width="100"
+            - next if data['code'][maker].size == 0
+            = disp+":"
+            - data['code'][maker].each do |str|
+              = raw(str)
+              br
+        td width="10"
+          a href="#top"
+            i.fa.fa-level-up.fa-2x
