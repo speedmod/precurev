@@ -1,0 +1,39 @@
+p#top style="text-align:center"
+  a name="top"
+  |プリカラ検索(ラスカル)　© プリカラ部 ♪
+form#song_query.fields action="songs/search" method="post"
+  table.table
+    tr
+      th
+        input#resetbtn.btn.btn-default.btn-sm type="reset" value="リセット"
+      th
+        | シリーズ
+        i#reset_series.fa.fa-eraser
+      th
+        | ボーカル
+        i#reset_vocalist.fa.fa-eraser
+      th
+        | 作曲
+        i#reset_composer.fa.fa-eraser
+      th
+        | 作詞
+        i#reset_writer.fa.fa-eraser
+    tr
+      td
+        input#query.form-control type="text" name="query" placeholder="曲名"
+      - h = { series: Series, vocalist: Vocalist, composer: Composer, writer: Writer }
+      - h.each do |key, clazz|
+        td
+          select.form-control id="#{key.to_s}" name="#{key.to_s}"
+            option value="empty"
+            - clazz.all.each do |s|
+              option value="#{s.id}"
+                = s.name
+  label
+    input type="radio" name="searchpos" value="begin_with" checked="true"
+      | 先頭
+  label
+    input type="radio" name="searchpos" value="included"
+      | 含む
+br
+#song_table

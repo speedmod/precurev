@@ -1,0 +1,27 @@
+/ ラスカル専用
+p align="right"
+  span style="font-size:x-large"
+    = @result.size
+  | 曲
+table.table.table-striped
+  tr
+    th 略
+    th 曲名
+    th DAM
+    th JOY
+  - @result.each do |r|
+    - data = JSON.parse(r.songdata)
+    tr
+      td width="5"
+        = data['series']
+      td width="200"
+        = r.name
+      / カラオケ番号
+      - {'DAM'=>'DAM','JOY'=>'JOY'}.each do |maker, disp|
+        td width="200"
+          - next if data['code'][maker].size == 0
+          = disp+":"
+          br
+          - data['code'][maker].each do |str|
+            = raw(str)
+            br

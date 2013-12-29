@@ -4,6 +4,7 @@ Prekara::Application.routes.draw do
     collection do
       get :mobile
       post :search
+      get :rascal
     end
   end
 end

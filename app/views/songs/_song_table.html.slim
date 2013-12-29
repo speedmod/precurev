@@ -3,7 +3,7 @@ p align="right"
     = @result.size
   | 曲
 .table-responsive
-  table.table.table-hover
+  table.table.table-striped
     tr
       th 略
       th 曲名
@@ -26,9 +26,12 @@ p align="right"
           = r.name
         - ["vocalist","composer","writer","arranger","code"].each do |key|
           - if key == "code"
-            - ["DAM", "JOY", "UGA", "tetsujin", "pasela"].each do |maker|
+            - {'DAM'=>'DAM','JOY'=>'JOY','UGA'=>'UGA','tetsujin'=>'鉄人','pasela'=>'パセラ'}.each do |maker, disp|
               td width="100"
-                - data[key][maker].each do |str|
+                - next if data['code'][maker].size == 0
+                = disp+":"
+                br
+                - data['code'][maker].each do |str|
                   = raw(str)
                   br
           - else

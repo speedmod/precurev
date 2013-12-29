@@ -20,6 +20,7 @@ class SongsController < ApplicationController
         next if value.nil? || value == 'empty'
         ids = []
         obj = clazz.where(id: value).first
+        next if obj.nil?
         obj.send((str+'_links').intern).each do |link|
           next unless link.song
           ids << link.song.id
@@ -30,13 +31,24 @@ class SongsController < ApplicationController
       @result = Song.where(id: song_ids)
     end
     if request.xhr?
-      part = is_mobile ? 'songs/song_table_m' : 'songs/song_table'
-      html = render_to_string partial: part
+      html = render_to_string partial: "songs/song_table#{part_suffix}"
       render json: { html: html }
+    end
+  end
+
+  def part_suffix
+    case
+    when is_mobile; '_m'
+    when is_rascal; '_r'
+    else; ''
     end
   end
 
   def is_mobile
     request.headers['referer'].include?('mobile')
+  end
+
+  def is_rascal
+    request.headers['referer'].include?('rascal')
   end
 end
