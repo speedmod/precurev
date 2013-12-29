@@ -20,18 +20,19 @@ p align="right"
       tr
         td width="10"
           = data['series']
-        td width="200"
+        td width="150"
           = r.name
-        td width="100"
+        td width="80"
           = data['vocalist'].join(',')
         / 作詞・作曲・編曲
-        td width="100"
+        td width="80"
           = artists_column data['writer'], data['composer'], data['arranger']
         / カラオケ番号
         - {'DAM'=>'DAM','JOY'=>'JOY','UGA'=>'UGA','tetsujin'=>'鉄人','pasela'=>'パセラ'}.each do |maker, disp|
           td width="100"
             - next if data['code'][maker].size == 0
             = disp+":"
+            br
             - data['code'][maker].each do |str|
               = raw(str)
               br
